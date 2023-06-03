@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./../index.css" />
+    <title>ShortLink</title>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div id="logo">
+          <i class="fa fa-link" aria-hidden="true"></i> shortUrl
+        </div>
+      </header>
+
+      <main>
+        <form action="/short-link" method="post">
+          <div class="form-box">
+            <input type="text" name="url" id="url" />
+          </div>
+
+          <button type="submit">Create Url</button>
+        </form>
+
+        <div id="short-link">
+          <table>
+            <thead>
+              <tr>
+                <th>FullUrl</th>
+                <th>ShortUrl</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% url.forEach(url => { %>
+              <tr>
+                <td>
+                  <a href="<%= url.fullUrl %>"><%= url.fullUrl %></a>
+                </td>
+                <td>
+                  <a href="<%= url.shortUrl %>"><%= url.shortUrl %></a>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
