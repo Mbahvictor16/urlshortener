@@ -19,11 +19,14 @@ app.get("/", async (req, res) => {
 
 app.post("/short-link", async (req, res) => {
   if (req.body.url == null || req.body.url == "") return res.redirect("/");
-  const newUrl = await urlSchema.create({
-    fullUrl: req.body.url,
-  });
 
-  await newUrl.save();
+  if (!/https:/i.test(req.body.url)) {
+    const newUrl = await urlSchema.create({
+      fullUrl: "https://www." + req.body.url,
+    });
+    await newUrl.save();
+  }
+
   res.redirect("/");
 });
 
