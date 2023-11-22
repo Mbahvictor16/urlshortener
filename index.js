@@ -9,6 +9,7 @@ const app = express();
 mongoose.connect("mongodb+srv://mbahvictor16:WHNvtuYRVq9wDi0O@shorturl.xqfcipr.mongodb.net/?retryWrites=true&w=majority");
 
 app.use(express.static("public"));
+app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
