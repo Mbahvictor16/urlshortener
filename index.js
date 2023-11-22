@@ -6,7 +6,7 @@ const urlSchema = require("./model/urlSchema");
 
 const app = express();
 
-mongoose.connect("mongodb://127.0.0.1/ShortLink");
+mongoose.connect("mongodb+srv://mbahvictor16:WHNvtuYRVq9wDi0O@shorturl.xqfcipr.mongodb.net/?retryWrites=true&w=majority");
 
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
