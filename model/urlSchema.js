@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const randomString = require("randomstring");
 
 const urlSchema = new mongoose.Schema({
   fullUrl: {
@@ -10,7 +9,6 @@ const urlSchema = new mongoose.Schema({
   shortUrl: {
     type: String,
     required: true,
-    default: randomString.generate(7),
   },
 });
 

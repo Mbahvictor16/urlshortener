@@ -4,49 +4,49 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./../index.css" />
+    <link rel="stylesheet" href="../index.css" />
     <title>ShortLink</title>
   </head>
   <body>
     <div id="app">
       <header>
         <div id="logo">
-          <i class="fa fa-link" aria-hidden="true"></i> shortUrl
+          <i class="fa fa-link" aria-hidden="true"></i>horturl
         </div>
       </header>
 
       <main>
-        <form action="/short-link" method="post">
-          <div class="form-box">
-            <input type="text" name="url" id="url" />
+        <section class="banner">
+          <div class="banner-bg">
+            <div class="banner-text">
+              <h1>
+                Make every connection count. Create short url and use them anywhere.
+              </h1>
+  
+              <div>
+                <a href="#paste-url" class="btn bg-black text-white">Get started &rarr;</a>
+              </div>
+            </div>
+
+            <div class="svg-bg"></div>
           </div>
+        </section>
 
-          <button type="submit">Create Url</button>
-        </form>
-
-        <div id="short-link">
-          <table>
-            <thead>
-              <tr>
-                <th>FullUrl</th>
-                <th>ShortUrl</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% url.forEach(url => { %>
-              <tr>
-                <td>
-                  <a href="<%= url.fullUrl %>"><%= url.fullUrl %></a>
-                </td>
-                <td>
-                  <a href="<%= url.shortUrl %>"><%= url.shortUrl %></a>
-                </td>
-              </tr>
-              <% }) %>
-            </tbody>
-          </table>
-        </div>
+        <section class="url-section">
+         <div class="url-div">
+            <div class="url-form">
+              <h1>
+                Paste URL here
+              </h1>
+  
+              <form action="/url/shorturl" method="post" id="paste-url">
+                <input type="url" name="url" id="url" />
+  
+                <button type="submit" class="btn bg-black text-white">Get URL <i class="fa fa-link" aria-hidden="true"></i></button>
+              </form>
+            </div>
+         </div>
+        </section>/
       </main>
     </div>
   </body>

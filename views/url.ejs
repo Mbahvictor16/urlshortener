@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css" />
+    <title>URL</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <div id="logo">
+              <i class="fa fa-link" aria-hidden="true"></i>horturl
+            </div>
+        </header>
+
+        <main>
+            <section class="url-section">
+                <div class="url-div">
+                    <div class="url-form" style="margin-top: 2em;">
+                        <h1>Your link is ready to use</h1>
+                        <div class="flex btn">
+                            <div class="url">
+                                <%=  url %>
+                            </div>
+            
+                            <span class="copy btn">copy</span>
+                        </div>
+                    </div>
+                </div>
+              </section>
+        </main>
+    </div>
+
+    <script src="../copy.js"></script>
+</body>
+</html>

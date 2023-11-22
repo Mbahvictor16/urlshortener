@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const express = require("express");
+const randomString = require("randomstring");
 
 const urlSchema = require("./model/urlSchema");
 
@@ -13,25 +14,29 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
 app.get("/", async (req, res) => {
-  const url = await urlSchema.find();
-  res.render("index", { url: url });
+  console.log(req.headers.host);
+  res.render("index");
 });
 
-app.post("/short-link", async (req, res) => {
+
+
+app.get("/url/shorturl", (req, res) => {
+  res.render("url", {url : ""})
+}).post("/url/shorturl", async (req, res) => {
   if (req.body.url == null || req.body.url == "") return res.redirect("/");
 
-  if (!/https:/i.test(req.body.url)) {
-    const newUrl = await urlSchema.create({
-      fullUrl: "https://www." + req.body.url,
-    });
-    await newUrl.save();
-  }
+  const newUrl = await urlSchema.create({
+    fullUrl: req.body.url,
+    shortUrl: `https://${req.headers.host}/${randomString.generate(7)}`
+  });
 
-  res.redirect("/");
+  await newUrl.save();
+  res.render("url", {url : newUrl.shortUrl});
+
 });
 
 app.get("/:shortUrl", async (req, res) => {
-  const findUrl = await urlSchema.findOne({ shortUrl: req.params.shortUrl });
+  const findUrl = await urlSchema.findOne({ shortUrl: `https://${req.headers.host}/${req.params.shortUrl}` });
 
   if (findUrl) {
     res.redirect(findUrl.fullUrl);
@@ -39,6 +44,7 @@ app.get("/:shortUrl", async (req, res) => {
     res.sendStatus(404);
   }
 });
+
 
 app.listen(3001, () => {
   console.log("server has started at http://localhost:3001");
