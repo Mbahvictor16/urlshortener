@@ -70,6 +70,7 @@ a {
 .btn {
   padding: var(--btn);
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .url-form {
